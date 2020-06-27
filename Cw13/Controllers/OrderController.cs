@@ -23,8 +23,7 @@ namespace Cw13.Controllers
         {
             List<Zamowienie> orders = null;
             List<ZamowienieDTO> ordersDTO = new List<ZamowienieDTO>();
-
-
+            
             if (getDTO.nazwisko != null)
             {
                 Klient client = _bakeryContext.Klienci.FirstOrDefault(w => w.Nazwisko == getDTO.nazwisko);
@@ -63,11 +62,8 @@ namespace Cw13.Controllers
                 }
 
                 orderDTO.wyroby = productsDTO.ToArray();
-
-
                 ordersDTO.Add(orderDTO);
             }
-
 
             return Ok(ordersDTO);
         }
@@ -105,8 +101,7 @@ namespace Cw13.Controllers
                 orderConfectioneries.Uwagi = productDTO.uwagi;
                 ordersConfectionery.Add(orderConfectioneries);
             }
-
-
+            
             newOrder.DataPrzyjecia = DateTime.Parse(noweZamowienieDTO.dataPrzyjecia);
             newOrder.Uwagi = noweZamowienieDTO.uwagi;
             newOrder.klient = client;

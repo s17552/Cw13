@@ -21,7 +21,6 @@ namespace Cw13.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
             modelBuilder.Entity<Zamowienie>()
                 .HasOne<Klient>(z => z.klient)
                 .WithMany(k => k.zamowienia)
@@ -31,11 +30,11 @@ namespace Cw13.Models
                 .HasOne<Pracownik>(z => z.pracownik)
                 .WithMany(p => p.zamowienia)
                 .HasForeignKey(zi => zi.IdPracownik);
-            
-            modelBuilder.Entity<Zamowienia_WyrobCukierniczy>()
-                .HasKey(zwc => new { zwc.IdWyrobuCukierniczego, zwc.IdZamowienia });
 
-            
+            modelBuilder.Entity<Zamowienia_WyrobCukierniczy>()
+                .HasKey(zwc => new {zwc.IdWyrobuCukierniczego, zwc.IdZamowienia});
+
+
             modelBuilder.Entity<Zamowienia_WyrobCukierniczy>()
                 .HasOne<WyrobCukierniczy>(z => z.wyrobCukierniczy)
                 .WithMany(p => p.zamowienia_WyrobCukiernicze)
@@ -47,38 +46,33 @@ namespace Cw13.Models
                 .HasForeignKey(zi => zi.IdZamowienia);
 
 
-
             modelBuilder.Entity<Klient>().HasData(
-
-            new Klient
-            {
-                IdKlient = 1,
-                Imie = "Yaroslav",
-                Nazwisko = "Chuiev",
-            }
+                new Klient
+                {
+                    IdKlient = 1,
+                    Imie = "Yaroslav",
+                    Nazwisko = "Chuiev",
+                }
             );
 
             modelBuilder.Entity<Pracownik>().HasData(
-
-            new Pracownik
-            {
-                IdPracownik = 1,
-                Imie = "Jan",
-                Nazwisko = "Kowalski",
-            }
+                new Pracownik
+                {
+                    IdPracownik = 1,
+                    Imie = "Jan",
+                    Nazwisko = "Kowalski",
+                }
             );
 
             modelBuilder.Entity<WyrobCukierniczy>().HasData(
-
-            new WyrobCukierniczy
-            {
-                IdWyrobuCukierniczego = 1,
-                Nazwa = "Wyrob",
-                CenaZaSzt = 3,
-                Typ = "Typ",
-            }
+                new WyrobCukierniczy
+                {
+                    IdWyrobuCukierniczego = 1,
+                    Nazwa = "Wyrob",
+                    CenaZaSzt = 3,
+                    Typ = "Typ",
+                }
             );
-
         }
     }
 }
